@@ -8,11 +8,10 @@ import java.sql.SQLException;
 @SpringBootApplication
 public class TwitchBudgetToolApplication {
 
-	public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
-		SpringApplication.run(TwitchBudgetToolApplication.class, args);
+        SpringApplication.run(TwitchBudgetToolApplication.class, args);
 
-		Connect.sayHey();
-	}
+    }
 
 }
