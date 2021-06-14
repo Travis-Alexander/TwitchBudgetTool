@@ -5,7 +5,13 @@ background-color: purple;
 font-size: 50px;
 color: blue;
 }
+
+
 .box {
 margin-top: 80px;
 text-align: center;
+}
+
+#registries {
+margin-top: 75px;
 }
