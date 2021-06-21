@@ -1,11 +1,13 @@
 package com.example.TwitchBudgetTool;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model; // thanks Lance
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -15,7 +17,10 @@ public class AppController {
     private UserRepo userRepo;
 
     @GetMapping("/users")
-    public String viewHomePage() {
+    public String listUsers(Model model) {
+        List<Users> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
         return "users";
     }
 
@@ -27,9 +32,9 @@ public class AppController {
     }
     @PostMapping("/process_register")
     public String processRegister(Users user) {
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
 
         userRepo.save(user);
 

@@ -1,20 +1,28 @@
+<DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <header>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">`   `
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </header>
 
 <body>
 <div th:insert="partials/navbar" :: navbar></div>
 <div class="hello">
-<section class="section">
-<div class="box ";>
-<h2>Twitch Budget Tool</h2>
-    <p>This is a tool for streamers. Here, you can track you're able to track your stream information. You will provide information such as stream day, stream time, and stream earnings. Additionally, you can maintain a wishlist of equipment that you wish to purchase. The Budget Tool will keep track of how much you're making and tell you how much you need to make to purchase that equipment.</p>
-</div>
-</section>
+    <section class="section">
+
+
+        <div class="box " ;>
+            <h2> Welcome to Twitch Budget Tool</h2>
+            <p>This is a tool for streamers. Here, you can track you're able to track your stream information. You will
+                provide information such as stream day, stream time, and stream earnings. Additionally, you can maintain
+                a wishlist of equipment that you wish to purchase. The Budget Tool will keep track of how much you're
+                making and tell you how much you need to make to purchase that equipment.</p>
+        </div>
+    </section>
 </div>
 
+<div class="container text-center box" id="registries">
+    <h3><a th:href="@{/users}">List of Users</a></h3>
+</div>
 </body>
 </html>

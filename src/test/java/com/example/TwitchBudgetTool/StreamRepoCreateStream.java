@@ -12,28 +12,29 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class UserRepoTest {
+public class StreamRepoCreateStream {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private UserRepo repo;
+    private StreamRepo repo;
 
     // test methods go below
     @Test
-    public void testCreateUser() {
-        Users user = new Users();
-        user.setEmail("test@gmail.com");
-        user.setPassword("testpassword");
-        user.setFirstName("test");
-        user.setLastName("user");
+    public void testCreateStream() {
+        Streams stream = new Streams();
+        stream.setDay("Monday");
+        stream.setTime("12:00:00");
+        stream.setEarnings(75.39);
 
-        Users savedUser = repo.save(user);
 
-        Users existUser = entityManager.find(Users.class, savedUser.getId());
 
-        assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+        Streams savedStream = repo.save(stream);
+        Streams existStream = entityManager.find(Streams.class, savedStream.getId());
+
+
+
 
     }
 }

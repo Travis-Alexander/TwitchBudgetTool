@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>View Streams</title>
+<!--    <link rel="stylesheet" th:href="index.css">-->
+</head>
+<body>
+<div align="center">
+    <h1>Stream List</h1>
+    <a href="/create_stream">Create New Stream</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Stream ID</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Earnings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="streams : ${listStreams}">
+            <td th:text="${streams.id}">Streams ID</td>
+            <td th:text="${streams.day}">Day Streamed</td>
+            <td th:text="${streams.time}">Time Streamed</td>
+            <td th:text="${streams.earnings}">Earnings</td>
+            <td>
+                <a th:href="@{'/edit/' + ${streams.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${streams.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
