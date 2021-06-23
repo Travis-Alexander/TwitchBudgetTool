@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div th:insert="partials/navbar" :: navbar></div>
+<div align="center">
+    <h1>Edit Stream</h1>
+    <br />
+    <form action="#" th:action="@{/editSave}" th:object="${streams}"
+          method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Stream Day:</td>
+                <td>
+                    <input type="text" th:field="*{day}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Stream Time:</td>
+                <td><input type="text" th:field="*{time}" /></td>
+            </tr>
+            <tr>
+                <td>Earnings:</td>
+                <td><input type="number" step="0.01" th:field="*{earnings}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

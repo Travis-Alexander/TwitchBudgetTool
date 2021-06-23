@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>View Streams</title>
-<!--    <link rel="stylesheet" th:href="index.css">-->
+    <link rel="stylesheet" th:href="index.css">
 </head>
 <body>
+<div th:insert="partials/navbar" :: navbar></div>
 <div align="center">
     <h1>Stream List</h1>
     <a href="/create_stream">Create New Stream</a>
@@ -27,7 +28,7 @@
             <td th:text="${streams.time}">Time Streamed</td>
             <td th:text="${streams.earnings}">Earnings</td>
             <td>
-                <a th:href="@{'/edit/' + ${streams.id}}">Edit</a>
+                <a th:href="@{'/edit/stream/' + ${streams.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/delete/' + ${streams.id}}">Delete</a>
             </td>

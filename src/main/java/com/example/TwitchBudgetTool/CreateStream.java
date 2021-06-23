@@ -3,10 +3,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -38,5 +36,25 @@ public class CreateStream {
         model.addAttribute("listStreams", listStreams);
 
         return "streams";
+    }
+    @RequestMapping("/edit/stream/{id}")
+    public ModelAndView editStream(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("edit_stream");
+        Streams stream = service.get(id);
+        mav.addObject("streams", stream);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/editSave", method = RequestMethod.POST)
+    public String edit(Streams newStream) {
+        Streams oldStream = service.get(newStream.getId());// this will load the existing animal
+        oldStream.setDay(newStream.getDay());
+        oldStream.setTime(newStream.getTime());
+        oldStream.setEarnings(newStream.getEarnings());
+
+        // do the rest of the updates
+        service.save(oldStream);
+        return "redirect:/streams";
     }
 }
