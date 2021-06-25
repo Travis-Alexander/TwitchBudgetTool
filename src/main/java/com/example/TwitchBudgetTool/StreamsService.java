@@ -14,8 +14,8 @@ public class StreamsService {
     @Autowired
     private StreamRepo repo;
 
-    public List<Streams> listAll() {
-        return repo.findAll();
+    public List<Streams> listAll(long ID) {
+        return repo.findAllStreams(ID);
     }
 
     public void save(Streams stream) {
