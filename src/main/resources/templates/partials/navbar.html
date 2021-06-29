@@ -23,11 +23,8 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" th:href="@{/}">
-                        Home
-                    </a>
                     <div sec:authorize="isAuthenticated()" class="navbar-item has-dropdown is-hoverable">
-                        <a  class="navbar-link">
+                        <a class="navbar-link">
                             Equipment
                         </a>
                         <div class="navbar-dropdown">
@@ -56,6 +53,13 @@
                             <a class="navbar-item" th:href="@{/streams}">
                                 View all Streams
                             </a>
+                        </div>
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="navbar-item">
+                        <a class="navbar-item" th:href="@{/streams}">
+                            Balance
+                        </a>
+
                         </div>
                     </div>
                 </div>

@@ -13,15 +13,8 @@
     <a href="/create_stream">Create New Stream</a>
     <br/><br/>
     <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>Stream ID</th>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Earnings</th>
-        </tr>
-        </thead>
-        <tbody>
+
+        <tbody class="box">
         <tr th:each="streams : ${listStreams}">
             <td th:text="${streams.id}">Streams ID</td>
             <td th:text="${streams.day}">Day Streamed</td>

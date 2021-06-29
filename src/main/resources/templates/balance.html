@@ -1,0 +1,33 @@
+<DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Budget</title>
+    <link rel="stylesheet" th:href="index.css">
+  </head>
+  <body>
+  <div th:insert="partials/navbar" :: navbar></div>
+  <div align="center">
+    <h1>Budget Book</h1>
+    <a href="/">Edit Monthly Deductions</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+
+      <tbody class="box">
+      <tr th:each="users : ${listStreams}">
+        <td th:text="${streams.id}">Streams ID</td>
+        <td th:text="${streams.day}">Day Streamed</td>
+        <td th:text="${streams.time}">Time Streamed</td>
+        <td th:text="${streams.earnings}">Earnings</td>
+        <td>
+          <a th:href="@{'/edit/stream/' + ${streams.id}}">Edit</a>
+          &nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/delete/' + ${streams.id}}">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </body>
+  </html>

@@ -22,6 +22,28 @@ public class Users {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
+    @Column(name = "balance", nullable = false)
+    private double balance;
+
+    @Column(name= "monthly_deductions", nullable = false)
+    private double deductions;
+
+    public double getDeductions() {
+        return deductions;
+    }
+
+    public void setDeductions(double deductions) {
+        this.deductions = deductions;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public Long getId() {
         return id;
     }

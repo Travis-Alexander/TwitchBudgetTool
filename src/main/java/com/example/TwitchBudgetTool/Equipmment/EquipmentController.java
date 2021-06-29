@@ -45,7 +45,7 @@ public class EquipmentController {
     public ModelAndView editEquipment(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("edit_equipment");
         Equipment equipment = service.get(id);
-        mav.addObject("streams", equipment);
+        mav.addObject("equipment", equipment);
 
         return mav;
     }

@@ -47,6 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/users").authenticated()
+                .antMatchers("/streams").authenticated()
+                .antMatchers("/new_stream").authenticated()
+                .antMatchers("/edit/stream/{id}").authenticated()
+                .antMatchers("/new_equipment").authenticated()
+                .antMatchers("/edit/equipment/{id}").authenticated()
+                .antMatchers("/delete/equipment/{id}").authenticated()
+                .antMatchers("/delete/stream/{id}").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
