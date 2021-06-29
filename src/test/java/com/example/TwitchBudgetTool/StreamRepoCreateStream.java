@@ -1,6 +1,8 @@
 package com.example.TwitchBudgetTool;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.TwitchBudgetTool.Streams.StreamRepo;
+import com.example.TwitchBudgetTool.Streams.Streams;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

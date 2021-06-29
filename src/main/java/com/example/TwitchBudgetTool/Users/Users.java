@@ -1,4 +1,4 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Users;
 
 import javax.persistence.*;
 

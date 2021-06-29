@@ -1,5 +1,6 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Streams;
 
+import com.example.TwitchBudgetTool.Streams.Streams;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

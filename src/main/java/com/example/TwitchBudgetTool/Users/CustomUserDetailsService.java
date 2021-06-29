@@ -1,4 +1,4 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,5 +1,7 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Users;
 
+import com.example.TwitchBudgetTool.Users.UserRepo;
+import com.example.TwitchBudgetTool.Users.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

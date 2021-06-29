@@ -1,4 +1,4 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Streams;
 
 
 import javax.persistence.*;

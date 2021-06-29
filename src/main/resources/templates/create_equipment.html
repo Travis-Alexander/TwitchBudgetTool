@@ -1,0 +1,33 @@
+<DOCTYPE HTML>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Add New Equipment</title>
+  </head>
+  <body>
+  <div align="center">
+    <h1>Add New Equipment</h1>
+    <br/>
+    <form action="#" th:action="@{/saveEquipment}" th:object="${equipment}"
+          method="post">
+
+      <table border="0" cellpadding="10">
+        <tr>
+          <td>Equipment</td>
+          <td><input type="text" th:field="*{Name}"/></td>
+        </tr>
+        <tr>
+          <td>Equipment Cost:</td>
+          <td><input type="number" th:field="*{Cost}"/></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">Save</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </body>
+  </html>

@@ -1,4 +1,7 @@
-package com.example.TwitchBudgetTool;
+package com.example.TwitchBudgetTool.Streams;
+
+
+import com.example.TwitchBudgetTool.Users.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -9,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class CreateStream {
+public class StreamController {
     @Autowired
     private StreamsService service;
 
@@ -22,7 +25,7 @@ public class CreateStream {
         return "create_stream";
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(Streams stream, @AuthenticationPrincipal CustomUserDetails userDetails) {
+public String saveProduct(Streams stream, @AuthenticationPrincipal CustomUserDetails userDetails) {
         Long authorID = userDetails.getID();
         stream.setAuthor_id(authorID);
         service.save(stream);
