@@ -20,8 +20,7 @@ public class Home {
 
     @GetMapping("/")
     public String homeController(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        System.out.println(userDetails.getID());
-        System.out.println("good morning my name is tokyo");
+
 //        Optional<Users> currUser = userRepo.findById(userDetails.getID());
 //        Users currentUser;
 //        if (currUser.isPresent()) {
