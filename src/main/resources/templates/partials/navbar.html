@@ -5,6 +5,7 @@
         <title></title>
     </head>
     <body>
+    <div>
     <div th:fragment="navbar">
 
         <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -74,6 +75,7 @@
                             <a sec:authorize="!isAuthenticated()" class="button is-light" th:href="@{/login}">
                                 Log in
                             </a>
+
 
                             <form th:action="@{/logout}" method="post">
                                 <input sec:authorize="isAuthenticated()" class="button is-dark" type="submit"
