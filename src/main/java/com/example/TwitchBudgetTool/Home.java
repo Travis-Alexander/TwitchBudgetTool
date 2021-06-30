@@ -22,12 +22,12 @@ public class Home {
     public String homeController(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         System.out.println(userDetails.getID());
         System.out.println("good morning my name is tokyo");
-        Optional<Users> currUser = userRepo.findById(userDetails.getID());
-        Users currentUser;
-        if (currUser.isPresent()) {
-            currentUser = currUser.get();
-            model.addAttribute("user", currentUser);
-        }
+//        Optional<Users> currUser = userRepo.findById(userDetails.getID());
+//        Users currentUser;
+//        if (currUser.isPresent()) {
+//            currentUser = currUser.get();
+//            model.addAttribute("user", currentUser);
+//        }
         return "home";
     }
 }

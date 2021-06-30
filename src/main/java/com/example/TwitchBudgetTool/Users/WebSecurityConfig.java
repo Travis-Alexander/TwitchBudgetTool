@@ -54,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/edit/equipment/{id}").authenticated()
                 .antMatchers("/delete/equipment/{id}").authenticated()
                 .antMatchers("/delete/stream/{id}").authenticated()
+                .antMatchers("/equipment").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
