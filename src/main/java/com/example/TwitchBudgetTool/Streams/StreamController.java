@@ -2,19 +2,28 @@ package com.example.TwitchBudgetTool.Streams;
 
 
 import com.example.TwitchBudgetTool.Users.CustomUserDetails;
+import com.example.TwitchBudgetTool.Users.CustomUserDetailsService;
+import com.example.TwitchBudgetTool.Users.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import com.example.TwitchBudgetTool.Users.Users;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class StreamController {
     @Autowired
     private StreamsService service;
+
+
+
+    @Autowired
+    private UserRepo userRepo;
 
 
     @RequestMapping("/new_stream")
@@ -37,6 +46,27 @@ public String saveProduct(Streams stream, @AuthenticationPrincipal CustomUserDet
     public String viewStreams(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         List<Streams> listStreams = service.listAll(userDetails.getID());
         model.addAttribute("listStreams", listStreams);
+        double totalBalance = 0;
+        for (Streams stream : listStreams) {
+            double dailyEarning = stream.getEarnings();
+            totalBalance += dailyEarning;
+        }
+        System.out.println(totalBalance);
+
+        Optional<Users> currUser = userRepo.findById(userDetails.getID());
+        Users currentUser;
+        if (currUser.isPresent()) {
+            currentUser = currUser.get();
+            currentUser.setBalance(totalBalance);
+            model.addAttribute("user", currentUser);
+            userRepo.save(currentUser);
+        }
+
+
+
+
+
+
 
         return "streams";
     }

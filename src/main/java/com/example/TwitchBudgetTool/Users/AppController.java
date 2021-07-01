@@ -45,12 +45,6 @@ public class AppController {
         return "register_success";
     }
 
-    @GetMapping("/budget")
-    public String budget(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        userRepo.showBalance(userDetails.getID()).getBalance();
-
-        return "balance";
-    }
 
 //    public String viewStreams(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
 //        List<Streams> listStreams = service.listAll(userDetails.getID());
