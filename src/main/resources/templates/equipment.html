@@ -18,6 +18,8 @@
         <th>Equipment ID</th>
         <th>Name</th>
         <th>Cost</th>
+        <th>Edit/Delete</th>
+        <th>How Much to Buy?</th>
       </tr>
       </thead>
       <tbody>
@@ -26,11 +28,13 @@
         <td th:text="${equipment.name}">Equipment</td>
         <td th:text="${equipment.cost}">Equipment Cost</td>
 
+
         <td>
           <a th:href="@{'/edit/equipment/' + ${equipment.id}}">Edit</a>
           &nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/delete/' + ${equipment.id}}">Delete</a>
+          <a th:href="@{'/delete/equipment/' + ${equipment.id}}">Delete</a>
         </td>
+        <td th:text="${equipment.progress}"></td>
       </tr>
       </tbody>
     </table>

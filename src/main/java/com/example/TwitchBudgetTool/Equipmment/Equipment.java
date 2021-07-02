@@ -31,6 +31,18 @@ public class Equipment {
     private Double cost;
 
 
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
+
+    @Column(name = "progress", columnDefinition = "varchar(50) default 'waiting'")
+    private String progress;
+
+
 
 
     public Long getId() {
@@ -57,5 +69,7 @@ public class Equipment {
     public void setCost(Double cost) {
         this.cost = cost;
     }
+
+
 }
 

@@ -1,5 +1,7 @@
 package com.example.TwitchBudgetTool.Equipmment;
 
+import com.example.TwitchBudgetTool.Streams.Streams;
+import com.example.TwitchBudgetTool.Streams.StreamsService;
 import com.example.TwitchBudgetTool.Users.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -7,13 +9,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import com.example.TwitchBudgetTool.Streams.StreamController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class EquipmentController {
     @Autowired
     private EquipmentService service;
+
+    @Autowired
+    StreamsService streamsService;
 
 
     @RequestMapping("/new_equipment")
@@ -36,7 +43,32 @@ public class EquipmentController {
     @RequestMapping("/equipment")
     public String viewStreams(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         List<Equipment> listEquipment = service.listAll(userDetails.getID());
+        List<Streams> listStreams = streamsService.listAll(userDetails.getID());
+
         model.addAttribute("listEquipment", listEquipment);
+        model.addAttribute("listStreams", listStreams);
+        double totalBalance = 0;
+        for (Streams stream : listStreams) {
+            double dailyEarning = stream.getEarnings();
+            totalBalance += dailyEarning;
+        }
+
+        for (Equipment equipment : listEquipment) {
+            double equipmentCost = equipment.getCost();
+            String canBuy = "You can buy this item";
+            double difference = equipmentCost - totalBalance;
+            System.out.println(totalBalance + " " + difference);
+
+            if (difference <= 0) {
+                equipment.setProgress(canBuy);
+                service.save(equipment);
+            } else {
+                equipment.setProgress(Double.toString(difference));
+                service.save(equipment);
+            }
+
+        }
+
 
         return "equipment";
     }
@@ -59,6 +91,12 @@ public class EquipmentController {
 
         // do the rest of the updates
         service.save(oldEquipment);
+        return "redirect:/equipment";
+    }
+
+    @RequestMapping("/delete/equipment/{id}")
+    public String deleteEquipment(@PathVariable(name = "id") int id) {
+        service.delete(id);
         return "redirect:/equipment";
     }
 }

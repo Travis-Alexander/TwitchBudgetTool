@@ -46,10 +46,5 @@ public class AppController {
     }
 
 
-//    public String viewStreams(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
-//        List<Streams> listStreams = service.listAll(userDetails.getID());
-//        model.addAttribute("listStreams", listStreams);
-//
-//        return "streams";
-//    }
+
 }

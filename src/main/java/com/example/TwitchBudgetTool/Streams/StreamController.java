@@ -51,7 +51,7 @@ public String saveProduct(Streams stream, @AuthenticationPrincipal CustomUserDet
             double dailyEarning = stream.getEarnings();
             totalBalance += dailyEarning;
         }
-        System.out.println(totalBalance);
+
 
         Optional<Users> currUser = userRepo.findById(userDetails.getID());
         Users currentUser;
@@ -88,6 +88,12 @@ public String saveProduct(Streams stream, @AuthenticationPrincipal CustomUserDet
 
         // do the rest of the updates
         service.save(oldStream);
+        return "redirect:/streams";
+    }
+
+    @RequestMapping("/delete/stream/{id}")
+    public String deleteStream(@PathVariable(name = "id") int id) {
+        service.delete(id);
         return "redirect:/streams";
     }
 }
