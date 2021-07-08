@@ -1,44 +1,51 @@
 <DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <title>View Streams</title>
-    <link rel="stylesheet" th:href="index.css">
-</head>
-<body>
-<div th:insert="partials/navbar" :: navbar></div>
-<div align="center">
-    <h1>Stream List</h1>
-    <a href="/create_stream">Create New Stream</a>
-    <br/><br/>
-    <tr th:object="${user}">
-        <td th:text="${user.balance}">Balance</td>
-    </tr>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>Stream ID</th>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Earnings</th>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>View Streams</title>
+        <link rel="stylesheet" th:href="index.css">
+    </head>
+    <body>
+    <div th:insert="partials/navbar" :: navbar></div>
+    <div align="center">
+        <div>
+            <h1 style="padding-top: 6rem;">Stream List</h1>
+            <a href="/create_stream">Create New Stream</a>
+        </div>
+        <br/><br/>
+        <div class="balance">
+            <h3 style="width: 1280px; height: 1px;">Total Balance: </h3>
+        </div>
+        <tr th:object="${user}">
+            <td class="balance" th:text="${user.balance}">Balance</td>
         </tr>
-        </thead>
+        <div>
+            <table class="table" border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th>Stream ID</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Earnings</th>
+                </tr>
+                </thead>
 
-        <tbody>
-        <tr th:each="streams : ${listStreams}">
-            <td th:text="${streams.id}">Streams ID</td>
-            <td th:text="${streams.day}">Day Streamed</td>
-            <td th:text="${streams.time}">Time Streamed</td>
-            <td th:text="${streams.earnings}">Earnings</td>
-            <td>
-                <a th:href="@{'/edit/stream/' + ${streams.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/stream/' + ${streams.id}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-</body>
-</html>
+                <tbody>
+                <tr th:each="streams : ${listStreams}">
+                    <td th:text="${streams.id}">Streams ID</td>
+                    <td th:text="${streams.day}">Day Streamed</td>
+                    <td th:text="${streams.time}">Time Streamed</td>
+                    <td th:text="${streams.earnings}">Earnings</td>
+                    <td>
+                        <a th:href="@{'/edit/stream/' + ${streams.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/stream/' + ${streams.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+    </html>
