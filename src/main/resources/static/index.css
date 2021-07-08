@@ -38,6 +38,9 @@ margin-top: 3rem;
     text-align: center;
 }
 
+.balance {
+display: flex;
+}
 
 .intro {
 padding:-left 10rem;
